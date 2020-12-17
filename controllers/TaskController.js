@@ -7,7 +7,7 @@ module.exports = {
 
       return res.json(tasks);
     } catch (error) {
-      return res.status(400).send({ error: `Erro ao carregar os tasks ${error}` });
+      return res.status(400).send({ msg: `Erro ao carregar os tasks`, error });
     }
   },
 
@@ -17,7 +17,7 @@ module.exports = {
 
       return res.json(task);
     } catch (error) {
-      return res.status(400).send({ error: `Erro ao carregar os tasks ${error}` });
+      return res.status(400).send({ msg: `Erro ao carregar a task`, error });
     }
   },
 
@@ -27,7 +27,7 @@ module.exports = {
 
       return res.json(task);
     } catch (error) {
-      return res.status(400).send({ error: `Erro ao carregar os tasks ${error}` });
+      return res.status(400).send({ msg: `Erro ao criar a task`, error });
     }
   },
 
@@ -39,7 +39,7 @@ module.exports = {
 
       return res.json(task);
     } catch (error) {
-      return res.status(400).send({ error: `Erro ao carregar os tasks ${error}` });
+      return res.status(400).send({ msg: `Erro ao atualizar a task`, error });
     }
   },
 
@@ -47,9 +47,9 @@ module.exports = {
     try {
       await Task.findByIdAndDelete(req.params.id);
 
-      return res.send({ alert: "Apagado com sucesso" });
+      return res.send({ msg: "Apagado com sucesso" });
     } catch (error) {
-      return res.status(400).send({ error: `Erro ao carregar os tasks ${error}` });
+      return res.status(400).send({ msg: `Erro ao destruir a task`, error });
     }
   },
 };

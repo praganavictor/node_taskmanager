@@ -11,7 +11,6 @@ module.exports = {
       if (await User.findOne({ email })) res.status(400).send({ error: "Usuario já existe" });
 
       const user = await User.create(req.body);
-      console.log("user", user);
 
       user.password = undefined;
 
@@ -22,7 +21,7 @@ module.exports = {
       return res.json({ user, token });
     } catch (error) {
       console.log("error", error);
-      res.status(400).send({ error: "Falha ao registrar" });
+      res.status(400).send({ msg: "Falha ao registrar", error });
     }
   },
 
